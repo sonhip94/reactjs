@@ -1,0 +1,35 @@
+tạo mảng lặp
+-users.map(user,index){} (arrow function es6)
+
+-props ( dùng để lấy dữ liệu từ thằng cha thông qua hàm)
+- thís.props.key <=== lấy ra key trong thuộc tính
+
+- this.props.childrens <===== lấy nội dung bên trong thẻ
+
+// cach 1
+// constructor(props){
+// 	super(props);
+// 	this.onAddToCart = this.onAddToCart.bind(this);
+// }
+// onAddToCart(){
+// 	alert(this.props.children);
+// }
+
+
+//cach 2 khong phai dung bind, k phai dung constructor
+onAddToCart2 = () => {
+	alert(this.props.children + ' - ' + this.props.price);
+}
+
+refs (facebook không khuyến khích sử dụng refs  dạng string nên để props ref={(node) => { this.node= node; }} , access = cách sử dụng this.node .﻿)
+
+state:
+- dung trong nội class
+- có thể đẩy state ra bên ngoài thông qua hàm có sử dụng props
+
+redux
+- constants/ActionTypes.js -> actions/index.js -> redeucers/file.js ->components
+- Mà  container nhiệm vụ lấy state từ store
+=> - constants/ActionTypes.js -> actions/index.js -> redeucers/file.js -> container(lấy state truyền cho components)-> components
+-----------------------ES6
+Khi function có truyền tham số thì phải viết duwosi dạng arrow function : () => function(value)

@@ -1,0 +1,34 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Iphone 100",
+      "completed": true
+    },
+    {
+      "id": 5,
+      "title": "Iphone 102",
+      "completed": true
+    },
+    {
+      "title": "Iphone 130",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "title": "Iphone 105",
+      "completed": true
+    },
+    {
+      "title": "Iphone 108",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "title": "Iphone 200",
+      "completed": false,
+      "id": 6
+    }
+  ]
+}
