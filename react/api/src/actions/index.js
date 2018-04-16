@@ -1,74 +1,77 @@
-import * as types from './../constants/ActionTypes';
+import * as Types from './../constants/ActionTypes';
+import callApi from './../utils/apiCaller';
 
-export const listAll = () => {
-    return {
-        type : types.LIST_ALL
-    }
-};
+export const actFetchProductsRequest = () => {
+    return dispatch => {
+        return callApi('products', 'GET', null).then(res => {
+            dispatch(actFetchProducts(res.data));
+        });
+    };
+}
 
-export const saveTask = (task) => {
+export const actFetchProducts = (products) => {
     return {
-        type : types.SAVE_TASK,
-        task // task : task
-    }
-};
-
-export const toggleForm = () => {
-    return {
-        type : types.TOGGLE_FORM
+        type : Types.FETCH_PRODUCTS,
+        products
     }
 }
 
-export const openForm = () => {
-    return {
-        type : types.OPEN_FORM
+export const actDeleteProductRequest = (id) => {
+    return dispatch => {
+        return callApi(`products/${id}`, 'DELETE', null).then(res =>{
+            dispatch(actDeleteProduct(id));
+        })
     }
 }
 
-export const closeForm = () => {
+export const actDeleteProduct = (id) => {
     return {
-        type : types.CLOSE_FORM
+        type : Types.DELETE_PRODUCT,
+        id
     }
 }
 
-export const updateStatus = (id) => {
-    return {
-        type : types.UPDATE_STATUS_TASK,
-        id // id : id
+export const actAddProductRequest = (product) => {
+    return dispatch => {
+        return callApi('products', 'POST', product).then(res => {
+            dispatch(actAddProduct(res.data));
+        });
     }
 }
 
-export const deleteTask = (id) => {
+export const actAddProduct = (product) => {
     return {
-        type : types.DELETE_TASK,
-        id // id : id
+        type : Types.ADD_PRODUCT,
+        product
     }
 }
 
-export const editTask = (task) => {
-    return {
-        type : types.EDIT_TASK,
-        task // task : task
+export const actGetProductRequest = (id) => {
+    return dispatch => {
+        return callApi(`products/${id}`, 'GET', null).then(res => {
+            dispatch(actGetProduct(res.data));
+        });
     }
 }
 
-export const filterTask = (filter) => {
+export const actGetProduct = (product) => {
     return {
-        type : types.FILTER_TABLE,
-        filter // filter : filter -> filterName, filterStatus
+        type : Types.EDIT_PRODUCT,
+        product
     }
 }
 
-export const searchTask = (keyword) => {
-    return {
-        type : types.SEARCH,
-        keyword // keyword : keyword
+export const actUpdateProductRequest = (product) => {
+    return dispatch => {
+        return callApi(`products/${product.id}`, 'PUT', product).then(res => {
+            dispatch(actUpdateProduct(res.data));
+        });
     }
 }
 
-export const sortTask = (sort) => {
+export const actUpdateProduct = (product) => {
     return {
-        type : types.SORT,
-        sort // sort : sort -> sort.by sort.value
+        type : Types.UPDATE_PRODUCT,
+        product
     }
 }

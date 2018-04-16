@@ -1,17 +1,14 @@
-import * as types from './../constants/ActionTypes';
+import * as Types from './../constants/ActionTypes';
 
-var initialState = {
-    id : '',
-    name : '',
-    status : false
-};
-var myReducer = (state = initialState, action) =>{
+var initialState = {};
+
+const itemEditing = (state = initialState, action) => {
     switch(action.type){
-        case types.EDIT_TASK:
-            return action.task;
+        case Types.EDIT_PRODUCT:
+            return action.product;
         default:
             return state;
     }
-};
+}
 
-export default myReducer;
+export default itemEditing;
