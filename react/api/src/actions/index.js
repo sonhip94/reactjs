@@ -1,83 +1,74 @@
-import * as types from "./../constants/ActionTypes";
-import callApi from "./../utils/apiCaller";
+import * as types from './../constants/ActionTypes';
 
-//Lấy dữ liệu từ server cho vào store
-export const actFetchProductsRequest = () => {
-    return dispatch => {
-        return callApi("products", "GET", null).then(res => {
-            dispatch(actFetchProducts(res.data));
-        });
-    };
-};
-
-export const actFetchProducts = products => {
+export const listAll = () => {
     return {
-        type: types.FETCH_PRODUCTS,
-        products
-    };
+        type : types.LIST_ALL
+    }
 };
 
-//DELETE server r delete trong store
-export const actDeleteProductRequest = id => {
-    return dispatch => {
-        return callApi(`products/${id}`, "DELETE", null).then(res => {
-            dispatch(actDeleteProduct(id));
-        });
-    };
-};
-
-export const actDeleteProduct = id => {
+export const saveTask = (task) => {
     return {
-        type: types.DELETE_PRODUCT,
-        id
-    };
+        type : types.SAVE_TASK,
+        task // task : task
+    }
 };
 
-//ADD 1 product len server va luu vao store
-
-export const actAddProductRequest = product => {
-    return dispatch => {
-        return callApi("products", "POST", product).then(res => {
-            dispatch(actAddProduct(res.data));
-        });
-    };
-};
-
-export const actAddProduct = product => {
+export const toggleForm = () => {
     return {
-        type: types.ADD_PRODUCT,
-        product
-    };
-};
-
-//Hien len 1 form chinh sua
-export const actGetProductRequest = id => {
-    return dispatch => {
-        return callApi(`products/${id}`, "GET", null).then(res => {
-            dispatch(actGetProduct(res.data));
-        });
-    };
-};
-
-export const actGetProduct = product => {
-    return {
-        type: types.EDIT_PRODUCT,
-        product
-    };
-};
-
-//update
-export const actUpdateProductRequest = product => {
-    return dispatch => {
-        return callApi(`products/${product.id}`, "PUT", product).then(res => {
-            dispatch(actUpdateProduct(res.data));
-        });
+        type : types.TOGGLE_FORM
     }
 }
 
-export const actUpdateProduct = product => {
+export const openForm = () => {
     return {
-        type: types.UPDATE_PRODUCT,
-        product
-    };
-};
+        type : types.OPEN_FORM
+    }
+}
+
+export const closeForm = () => {
+    return {
+        type : types.CLOSE_FORM
+    }
+}
+
+export const updateStatus = (id) => {
+    return {
+        type : types.UPDATE_STATUS_TASK,
+        id // id : id
+    }
+}
+
+export const deleteTask = (id) => {
+    return {
+        type : types.DELETE_TASK,
+        id // id : id
+    }
+}
+
+export const editTask = (task) => {
+    return {
+        type : types.EDIT_TASK,
+        task // task : task
+    }
+}
+
+export const filterTask = (filter) => {
+    return {
+        type : types.FILTER_TABLE,
+        filter // filter : filter -> filterName, filterStatus
+    }
+}
+
+export const searchTask = (keyword) => {
+    return {
+        type : types.SEARCH,
+        keyword // keyword : keyword
+    }
+}
+
+export const sortTask = (sort) => {
+    return {
+        type : types.SORT,
+        sort // sort : sort -> sort.by sort.value
+    }
+}
